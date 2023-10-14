@@ -20,6 +20,7 @@
     <ClInclude Include="CubeWireframeIVBO.h" />
     <ClInclude Include="Graphic.h" />
     <ClInclude Include="GraphicObject.h" />
+    <ClInclude Include="ModuleRenderer.h" />
     <ClInclude Include="MyGameEngine.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="types.h" />
@@ -33,6 +34,7 @@
     <ClCompile Include="CubeVertexBuffer.cpp" />
     <ClCompile Include="CubeWireframeIVBO.cpp" />
     <ClCompile Include="GraphicObject.cpp" />
+    <ClCompile Include="ModuleRenderer.cpp" />
     <ClCompile Include="MyGameEngine.cpp" />
     <ClCompile Include="Texture2D.cpp" />
   </ItemGroup>

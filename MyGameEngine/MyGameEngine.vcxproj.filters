@@ -5,6 +5,10 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
     <Filter Include="Modules">
       <UniqueIdentifier>{3e6ce45e-1bd7-4b68-9f28-d8db3ff581ba}</UniqueIdentifier>
     </Filter>
@@ -16,6 +20,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyGameEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Modules</Filter>
     </ClInclude>
@@ -46,11 +56,8 @@
     <ClInclude Include="Texture2D.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="MyGameEngine.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="types.h">
-      <Filter>Object Templates</Filter>
+    <ClInclude Include="ModuleRenderer.h">
+      <Filter>Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +90,9 @@
     </ClCompile>
     <ClCompile Include="Texture2D.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleRenderer.cpp">
+      <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
