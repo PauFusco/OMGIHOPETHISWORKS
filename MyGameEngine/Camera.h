@@ -1,9 +1,22 @@
 #pragma once
 
+#include "Module.h"
+#include "Engine_Globals.h"
 #include "types.h"
 
-struct Camera
+class Camera : public Module
 {
+public:
+	Camera(MyGameEngine* app, bool start_enabled = true);
+	~Camera(){}
+
+	bool Init();
+	bool Start();
+	update_status Update();
+	bool CleanUp;
+
+	mat4 computeLookAt() const;
+public:
 	double fov;
 	double aspect;
 	double zNear;
@@ -12,9 +25,5 @@ struct Camera
 	vec3 eye;
 	vec3 center;
 	vec3 up;
-
-	mat4 computeLookAt() const;
-
-	Camera();
 };
 

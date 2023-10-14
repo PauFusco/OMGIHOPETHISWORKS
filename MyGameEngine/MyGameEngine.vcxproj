@@ -18,8 +18,10 @@
     <ClInclude Include="CubeVertexArray.h" />
     <ClInclude Include="CubeVertexBuffer.h" />
     <ClInclude Include="CubeWireframeIVBO.h" />
+    <ClInclude Include="Engine_Globals.h" />
     <ClInclude Include="Graphic.h" />
     <ClInclude Include="GraphicObject.h" />
+    <ClInclude Include="Module.h" />
     <ClInclude Include="MyGameEngine.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="types.h" />
