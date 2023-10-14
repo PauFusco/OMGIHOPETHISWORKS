@@ -22,11 +22,13 @@ MyGameEngine::MyGameEngine() {
 
 }
 
+// This would be Update of Application
 void MyGameEngine::step(std::chrono::duration<double> dt) {
     const double angle_vel = 90.0; // degrees per second
 	angle += angle_vel * dt.count();
 }
 
+// This would go on renderer Module {
 static void drawAxis() {
     glLineWidth(4.0);
     glBegin(GL_LINES);
@@ -98,3 +100,4 @@ void MyGameEngine::render() {
 #pragma endregion
     assert(glGetError() ==GL_NONE);
 }
+// }

@@ -3,6 +3,7 @@
 #include <chrono>
 
 #include "types.h"
+#include "Globals.h"
 #include "Camera.h"
 
 class MyGameEngine
