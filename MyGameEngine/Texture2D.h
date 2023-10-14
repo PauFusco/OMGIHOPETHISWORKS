@@ -12,7 +12,7 @@ public:
 
 	explicit Texture2D(const std::string& path);
 	~Texture2D();
-	
+
 	void bind() const;
 };
 
