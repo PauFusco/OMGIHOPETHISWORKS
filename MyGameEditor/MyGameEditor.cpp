@@ -8,6 +8,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 
+#include "Globals.h"
+
 #include "../MyGameEngine/MyGameEngine.h"
 
 using namespace std;
@@ -87,13 +89,13 @@ int main(int argc, char* argv[])
 
 		{
 			MyGameEngine engine;
-			engine.camera.fov = 60;
-			engine.camera.aspect = static_cast<double>(WINDOW_WIDTH) / WINDOW_HEIGHT;
-			engine.camera.zNear = 0.1;
-			engine.camera.zFar = 100;
-			engine.camera.eye = vec3(5, 1.75, 5);
-			engine.camera.center = vec3(0, 1, 0);
-			engine.camera.up = vec3(0, 1, 0);
+			engine.camera->fov = 60;
+			engine.camera->aspect = static_cast<double>(WINDOW_WIDTH) / WINDOW_HEIGHT;
+			engine.camera->zNear = 0.1;
+			engine.camera->zFar = 100;
+			engine.camera->eye = vec3(5, 1.75, 5);
+			engine.camera->center = vec3(0, 1, 0);
+			engine.camera->up = vec3(0, 1, 0);
 
 
 			while (processSDLEvents()) {

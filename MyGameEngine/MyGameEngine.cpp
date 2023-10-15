@@ -1,5 +1,5 @@
 #include "MyGameEngine.h"
-#include <GL\glew.h>
+#include <GL/glew.h>
 #include <glm/ext/matrix_transform.hpp>
 #include <vector>
 #include <IL/il.h>
@@ -16,10 +16,18 @@ using namespace std;
 
 static double angle = 0.0;
 
-MyGameEngine::MyGameEngine() {
+MyGameEngine::MyGameEngine()
+{
 
-	ilInit();
+	camera = new Camera(this);
 
+	AddModule(camera);
+
+}
+MyGameEngine::~MyGameEngine()
+{
+	CleanUp();
+	list_modules.clear();
 }
 
 // This would be Update of Application
@@ -68,13 +76,13 @@ static void drawGrid(int grid_size, int grid_step) {
 void MyGameEngine::render() {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(camera.fov, camera.aspect, camera.zNear, camera.zFar);
+	gluPerspective(camera->fov, camera->aspect, camera->zNear, camera->zFar);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	gluLookAt(camera.eye.x, camera.eye.y, camera.eye.z,
-		camera.center.x, camera.center.y, camera.center.z,
-		camera.up.x, camera.up.y, camera.up.z);
+	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z,
+		camera->center.x, camera->center.y, camera->center.z,
+		camera->up.x, camera->up.y, camera->up.z);
 
 	drawGrid(100, 1);
 	drawAxis();
@@ -101,3 +109,62 @@ void MyGameEngine::render() {
 	assert(glGetError() == GL_NONE);
 }
 // }
+
+bool MyGameEngine::Init()
+{
+	bool ret = true;
+
+	// Call Init() in all modules
+	for (const auto& item : list_modules)
+	{
+		item->Init();
+	}
+
+	// After Init, call Start()
+	LOG("Application Start --------------");
+	for (const auto& item : list_modules)
+	{
+		item->Start();
+	}
+
+	return ret;
+}
+
+bool MyGameEngine::Update()
+{
+	bool ret = true;
+	//PrepareUpdate();
+
+	for (const auto& item : list_modules)
+	{
+		item->PreUpdate();
+	}
+
+	for (const auto& item : list_modules)
+	{
+		item->Update();
+	}
+
+	for (const auto& item : list_modules)
+	{
+		item->PostUpdate();
+	}
+
+	//FinishUpdate();
+	return ret;
+}
+
+bool MyGameEngine::CleanUp()
+{
+	bool ret = true;
+	for (const auto& item : list_modules)
+	{
+		item->CleanUp();
+	}
+	return ret;
+}
+
+void MyGameEngine::AddModule(Module* mod)
+{
+	list_modules.push_back(mod);
+}

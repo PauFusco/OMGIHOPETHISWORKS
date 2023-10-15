@@ -1,3 +1,4 @@
+
 class MyGameEngine;
 
 class Module
@@ -6,9 +7,9 @@ private:
 	bool enabled;
 
 public:
-	MyGameEngine* App;
+	MyGameEngine* Engine;
 
-	Module(MyGameEngine* parent, bool start_enabled = true) : App(parent)
+	Module(MyGameEngine* parent, bool start_enabled = true) : Engine(parent)
 	{}
 
 	virtual ~Module()
@@ -24,19 +25,19 @@ public:
 		return true;
 	}
 
-	virtual update_status PreUpdate()
+	virtual bool PreUpdate() 
 	{
-		return UPDATE_CONTINUE;
+		return true;
 	}
 
-	virtual update_status Update()
+	virtual bool Update()
 	{
-		return UPDATE_CONTINUE;
+		return true;
 	}
 
-	virtual update_status PostUpdate()
+	virtual bool PostUpdate()
 	{
-		return UPDATE_CONTINUE;
+		return true;
 	}
 
 	virtual bool CleanUp()
