@@ -130,9 +130,9 @@ bool MyGameEngine::Init()
 	return ret;
 }
 
-update_status MyGameEngine::Update()
+bool MyGameEngine::Update()
 {
-	update_status ret = update_status::UPDATE_CONTINUE;
+	bool ret = true;
 	//PrepareUpdate();
 
 	for (const auto& item : list_modules)

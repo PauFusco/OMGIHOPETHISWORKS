@@ -13,6 +13,18 @@ bool Camera::Init() {
 	eye = vec3(10, 2, 10);
 	center = vec3(0, 1, 0);
 	up = vec3(0, 1, 0);
+	
+	return true;
+}
+
+bool Camera::Start()
+{
+	return true;
+}
+
+bool Camera::Update()
+{
+	return true;
 }
 
 glm::dmat4 Camera::computeLookAt() const {

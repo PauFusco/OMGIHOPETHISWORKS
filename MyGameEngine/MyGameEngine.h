@@ -14,7 +14,7 @@ public:
 	~MyGameEngine();
 
 	bool Init();
-	update_status Update();
+	bool Update();
 	bool CleanUp();
 
 	void step(std::chrono::duration<double> dt);

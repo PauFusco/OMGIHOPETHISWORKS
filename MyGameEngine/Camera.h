@@ -12,7 +12,7 @@ public:
 
 	bool Init();
 	bool Start();
-	update_status Update();
+	bool Update();
 	bool CleanUp;
 
 	mat4 computeLookAt() const;

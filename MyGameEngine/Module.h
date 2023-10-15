@@ -25,19 +25,19 @@ public:
 		return true;
 	}
 
-	virtual update_status PreUpdate() 
+	virtual bool PreUpdate() 
 	{
-		return update_status::UPDATE_CONTINUE;
+		return true;
 	}
 
-	virtual update_status Update()
+	virtual bool Update()
 	{
-		return update_status::UPDATE_CONTINUE;
+		return true;
 	}
 
-	virtual update_status PostUpdate()
+	virtual bool PostUpdate()
 	{
-		return update_status::UPDATE_CONTINUE;
+		return true;
 	}
 
 	virtual bool CleanUp()
