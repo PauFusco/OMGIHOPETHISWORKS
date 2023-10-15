@@ -15,45 +15,15 @@
 
 using namespace std;
 
+ModuleRenderer::ModuleRenderer(MyGameEngine* app, bool start_enabled) : Module(app, start_enabled)
+{}
+bool ModuleRenderer::Init() {
 
-// This would go on renderer Module {
-static void drawAxis() {
-	glLineWidth(4.0);
-	glBegin(GL_LINES);
-	glColor3ub(255, 0, 0);
-	glVertex3d(0, 0, 0);
-	glVertex3d(0.8, 0, 0);
-	glColor3ub(0, 255, 0);
-	glVertex3d(0, 0, 0);
-	glVertex3d(0, 0.8, 0);
-	glColor3ub(0, 0, 1);
-	glVertex3d(0, 0, 0);
-	glVertex3d(0, 0, 0.8);
-	glEnd();
+	return true;
 }
 
-static void drawGrid(int grid_size, int grid_step) {
-	glLineWidth(1.0);
-	glColor3ub(128, 128, 128);
-
-	glBegin(GL_LINES);
-	for (int i = -grid_size; i <= grid_size; i += grid_step) {
-		//XY plane
-		glVertex2i(i, -grid_size);
-		glVertex2i(i, grid_size);
-		glVertex2i(-grid_size, i);
-		glVertex2i(grid_size, i);
-
-		//XZ plane
-		glVertex3i(i, 0, -grid_size);
-		glVertex3i(i, 0, grid_size);
-		glVertex3i(-grid_size, 0, i);
-		glVertex3i(grid_size, 0, i);
-	}
-	glEnd();
-}
-
-void ModuleRenderer::render() {
+bool ModuleRenderer::PreUpdate()
+{
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(camera.fov, camera.aspect, camera.zNear, camera.zFar);
@@ -67,7 +37,11 @@ void ModuleRenderer::render() {
 	drawGrid(100, 1);
 	drawAxis();
 
+	return true;
+}
 
+bool ModuleRenderer::PostUpdate()
+{
 #pragma region Draw Sandbox
 	auto cubeDraw = make_shared<CubeImmediateMode>();
 	GraphicObject cubeA(cubeDraw);
@@ -87,5 +61,47 @@ void ModuleRenderer::render() {
 
 #pragma endregion
 	assert(glGetError() == GL_NONE);
+
+	return true;
 }
-// }
+
+bool ModuleRenderer::CleanUp()
+{
+	return true;
+}
+
+void ModuleRenderer::drawAxis() {
+	glLineWidth(4.0);
+	glBegin(GL_LINES);
+	glColor3ub(255, 0, 0);
+	glVertex3d(0, 0, 0);
+	glVertex3d(0.8, 0, 0);
+	glColor3ub(0, 255, 0);
+	glVertex3d(0, 0, 0);
+	glVertex3d(0, 0.8, 0);
+	glColor3ub(0, 0, 1);
+	glVertex3d(0, 0, 0);
+	glVertex3d(0, 0, 0.8);
+	glEnd();
+}
+
+void ModuleRenderer::drawGrid(int grid_size, int grid_step) {
+	glLineWidth(1.0);
+	glColor3ub(128, 128, 128);
+
+	glBegin(GL_LINES);
+	for (int i = -grid_size; i <= grid_size; i += grid_step) {
+		//XY plane
+		glVertex2i(i, -grid_size);
+		glVertex2i(i, grid_size);
+		glVertex2i(-grid_size, i);
+		glVertex2i(grid_size, i);
+
+		//XZ plane
+		glVertex3i(i, 0, -grid_size);
+		glVertex3i(i, 0, grid_size);
+		glVertex3i(-grid_size, 0, i);
+		glVertex3i(grid_size, 0, i);
+	}
+	glEnd();
+}

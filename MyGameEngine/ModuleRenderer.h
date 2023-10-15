@@ -9,20 +9,22 @@ class ModuleRenderer : public Module
 
 public:
 
-	ModuleRenderer(MyGameEngine* app);
+	ModuleRenderer(MyGameEngine* app, bool start_enabled);
 	~ModuleRenderer();
 
 	bool Init();
-	update_status PreUpdate();
-	update_status PostUpdate();
+	bool PreUpdate();
+	bool PostUpdate();
 	bool CleanUp();
 
 	void OnResize(int width, int height);
 
 	void render();
+	void drawGrid(int grid_size, int grid_step);
+	void drawAxis();
 
 public:
 
-	static double angle = 0.0;
+	const double angle = 0.0f;
 	Camera camera;
 };
