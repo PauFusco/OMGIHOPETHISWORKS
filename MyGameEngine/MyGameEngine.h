@@ -6,6 +6,7 @@
 #include "types.h"
 #include "Engine_Globals.h"
 #include "Camera.h"
+#include "ModuleRenderer.h"
 
 class MyGameEngine
 {
@@ -18,7 +19,7 @@ public:
 	bool CleanUp();
 
 	void step(std::chrono::duration<double> dt);
-	void render();
+	//void render();
 
 private:
 	void AddModule(Module* mod);
@@ -28,6 +29,8 @@ private:
 public:
 	// Module Variables
 	Camera* camera;
+	ModuleRenderer* renderer;
+	
 
 private:
 	std::list<Module*> list_modules;

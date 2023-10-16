@@ -7,7 +7,7 @@
 class Camera : public Module
 {
 public:
-	Camera(MyGameEngine* app, bool start_enabled = true);
+	Camera(MyGameEngine* Engine, bool start_enabled = true);
 	~Camera(){}
 
 	bool Init();

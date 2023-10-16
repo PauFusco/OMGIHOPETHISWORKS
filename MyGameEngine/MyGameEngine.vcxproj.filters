@@ -58,6 +58,9 @@
     <ClInclude Include="Engine_Globals.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleRenderer.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyGameEngine.cpp">
@@ -89,6 +92,9 @@
     </ClCompile>
     <ClCompile Include="Texture2D.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleRenderer.cpp">
+      <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
